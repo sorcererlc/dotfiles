@@ -1,0 +1,48 @@
+{
+  "include": [
+    "~/.config/waybar/workspaces.jsonc",
+    "~/.config/waybar/system.jsonc",
+    "~/.config/waybar/audio.jsonc",
+    "~/.config/waybar/modules_old.jsonc"
+  ],
+  "layer": "top",
+  "exclusive": true,
+  "passthrough": false,
+  "position": "top",
+  "spacing": 3,
+  "fixed-center": true,
+  "ipc": true,
+  "margin-top": 3,
+  "margin-left": 8,
+  "margin-right": 8,
+  "output": "DP-1",
+  "modules-left": [
+    "custom/menu",
+    "custom/separator#dot-line",
+    "group/motherboard",
+    "custom/separator#dot-line",
+    "custom/weather"
+  ],
+  "modules-center": [
+    "custom/swaync",
+    "custom/cava_mviz",
+    "custom/separator#dot-line",
+    "clock",
+    "custom/separator#dot-line",
+    "hyprland/workspaces",
+    "custom/separator#dot-line",
+    "idle_inhibitor"
+  ],
+  "modules-right": [
+    "network#speed",
+    "custom/separator#dot-line",
+    "tray",
+    "mpris",
+    "bluetooth",
+    "group/audio",
+    "keyboard-state",
+    "custom/updater",
+    "custom/separator#dot-line",
+    "custom/power"
+  ]
+}

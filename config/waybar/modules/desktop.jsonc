@@ -1,0 +1,43 @@
+{
+	"custom/menu": {
+		"format": "",
+		"on-click": "pkill rofi || rofi -show drun -modi run,drun,filebrowser,window",
+		"on-click-middle": "",
+		"on-click-right": "",
+		"tooltip": false,
+		"tooltip-format": "Left Click: Rofi Menu\nMiddle Click: Wallpaper Menu\nRight Click: Waybar Layout Menu"
+	},
+  "hyprland/window": {
+		"format": "{}",
+		"max-length": 20,
+		"separate-outputs": true,
+		"offscreen-css": true,
+		"offscreen-css-text": "(inactive)",
+		"rewrite": {
+			"(.*) — Mozilla Firefox": " $1",
+			"(.*) - fish": "> [$1]",
+			"(.*) - zsh": "> [$1]",
+			"(.*) - $term": "> [$1]"
+		}
+	},
+	"idle_inhibitor": {
+		"format": "{icon}",
+		"format-icons": {
+			"activated": " ",
+			"deactivated": " "
+		}
+	},
+	"taskbar": {
+		"format": "{icon} {name}",
+		"icon-size": 16,
+		"all-outputs": false,
+		"tooltip-format": "{title}",
+		"on-click": "activate",
+		"on-click-middle": "close",
+		"ignore-list": [
+			"wofi",
+			"rofi",
+			"kitty"
+		]
+	}
+}

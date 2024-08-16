@@ -1,0 +1,12 @@
+{
+  "custom/weather": {
+		"format": "{}",
+		"format-alt": "{alt}: {}",
+		"format-alt-click": "click",
+		"interval": 3600,
+		"return-type": "json",
+		"exec": "~/.scripts/weather.sh",
+		"exec-if": "ping openweathermap.org -c1",
+		"tooltip": true
+	}
+}
