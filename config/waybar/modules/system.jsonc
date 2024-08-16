@@ -1,12 +1,11 @@
 {
-  "group/motherboard": {
+	"group/motherboard": {
 		"orientation": "horizontal",
 		"modules": [
 			"cpu",
 			"memory",
 			"temperature",
 			"disk#root",
-			"disk#home",
 			"disk#storage"
 		]
 	},
@@ -22,16 +21,15 @@
 			"memory",
 			"temperature",
 			"disk#root",
-			"disk#home",
 			"disk#storage"
 		]
 	},
-  "cpu": {
-		"format": "{usage}% 󰍛",
+	"cpu": {
+		"format": "{usage}% 󰾆",
 		"interval": 1,
 		"min-length": 5,
 		"format-alt-click": "click",
-		"format-alt": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% 󰍛",
+		"format-alt": "{icon0}{icon1}{icon2}{icon3} {usage:>2}% 󰾆",
 		"format-icons": [
 			"▁",
 			"▂",
@@ -42,18 +40,18 @@
 			"▇",
 			"█"
 		],
-		"on-click-right": "gnome-system-monitor",
+		"on-click-right": "kitty --title btop sh -c 'btop'"
 	},
-  "memory": {
+	"memory": {
 		"interval": 10,
-		"format": "{used:0.1f}G 󰾆",
-		"format-alt": "{percentage}% 󰾆",
+		"format": "{used:0.1f}G 󰍛",
+		"format-alt": "{percentage}% 󰍛",
 		"format-alt-click": "click",
 		"tooltip": true,
 		"tooltip-format": "{used:0.1f}GB/{total:0.1f}G",
 		"on-click-right": "kitty --title btop sh -c 'btop'"
 	},
-  "temperature": {
+	"temperature": {
 		"interval": 10,
 		"tooltip": true,
 		"hwmon-path": [
@@ -73,18 +71,59 @@
 		"interval": 30,
 		"path": "/",
 		"format": "{percentage_used}% 󰋊",
-		"tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
+		"tooltip-format": "{path}: {used}/{total}"
 	},
 	"disk#home": {
 		"interval": 30,
 		"path": "/home",
 		"format": "{percentage_used}% 󰋊",
-		"tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
+		"tooltip-format": "{path}: {used}/{total}"
 	},
 	"disk#storage": {
 		"interval": 30,
 		"path": "/mnt/storage",
 		"format": "{percentage_used}% 󰋊",
-		"tooltip-format": "{used} used out of {total} on {path} ({percentage_used}%)",
+		"tooltip-format": "{path}: {used}/{total}"
 	},
+	"clock": {
+		"interval": 60,
+		"format": "{:%a | %d %B %Y | %H:%M}",
+		"tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+	},
+	"keyboard-state": {
+		"capslock": true,
+		"format": {
+			"numlock": "N {icon}",
+			"capslock": "󰪛 {icon}"
+		},
+		"format-icons": {
+			"locked": "",
+			"unlocked": ""
+		}
+	},
+	"tray": {
+		"icon-size": 18,
+		"spacing": 4
+	},
+	"custom/lock": {
+		"format": "󰌾",
+		"on-click": "~/.scripts/lock_screen.sh",
+		"tooltip": true,
+		"tooltip-format": "󰷛 Screen Lock"
+	},
+	"custom/power": {
+		"format": "⏻ ",
+		"on-click": "~/.scripts/power_menu.sh",
+		"tooltip": true,
+		"tooltip-format": "Left Click: Power Menu"
+	},
+	"custom/updater": {
+		"format": " {}",
+		"exec": "dnf check-update | awk 'NR>2 {print last} {last=$0}' | wc -l",
+		"exec-if": "[[ $(dnf check-update | awk 'NR>2 {print last} {last=$0}' | wc -l) ]]",
+		"interval": 15,
+		"on-click": "kitty -T update sudo dnf upgrade && flatpak update && notify-send 'The system has been updated'",
+		"tooltip": true,
+		"tooltip-format": "Left Click: Update System\nFedora Linux Only"
+	}
 }

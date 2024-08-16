@@ -1,9 +1,13 @@
 {
   "include": [
-    "~/.config/waybar/workspaces.jsonc",
-    "~/.config/waybar/system.jsonc",
-    "~/.config/waybar/audio.jsonc",
-    "~/.config/waybar/modules_old.jsonc"
+    "~/.config/waybar/modules/workspaces.jsonc",
+    "~/.config/waybar/modules/system.jsonc",
+    "~/.config/waybar/modules/audio.jsonc",
+    "~/.config/waybar/modules/network.jsonc",
+    "~/.config/waybar/modules/desktop.jsonc",
+    "~/.config/waybar/modules/notifications.jsonc",
+    "~/.config/waybar/modules/weather.jsonc",
+    "~/.config/waybar/modules/separators.jsonc"
   ],
   "layer": "top",
   "exclusive": true,
@@ -25,19 +29,17 @@
   ],
   "modules-center": [
     "custom/swaync",
-    "custom/cava_mviz",
+    "custom/cava",
     "custom/separator#dot-line",
     "clock",
     "custom/separator#dot-line",
-    "hyprland/workspaces",
-    "custom/separator#dot-line",
-    "idle_inhibitor"
+    "hyprland/workspaces"
   ],
   "modules-right": [
     "network#speed",
     "custom/separator#dot-line",
-    "tray",
     "mpris",
+    "tray",
     "bluetooth",
     "group/audio",
     "keyboard-state",

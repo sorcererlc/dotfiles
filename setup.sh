@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-SOURCE_DIRS=( "$PWD/config" "$PWD/themes" )
-DEST_DIRS=( "$HOME/.config" "$HOME/.themes" )
+SOURCE_DIRS=( "$PWD/config" "$PWD/scripts" "$PWD/themes/home" "$PWD/themes/local_share" )
+DEST_DIRS=( "$HOME/.config" "$HOME/.scripts" "$HOME/.themes" "$HOME/.local/share/" )
 
 for ((i=0; i < ${#SOURCE_DIRS[@]}; i++)); do
   dir="${SOURCE_DIRS[i]}/*/"
@@ -25,3 +25,9 @@ for ((i=0; i < ${#SOURCE_DIRS[@]}; i++)); do
     ln -s "$src" "$target"
   done
 done
+
+echo "Installing Catppuccin GTK theme."
+python3 $PWD/themes/catppuccin_gtk_install.py mocha mauve
+
+flatpak override --filesystem=$HOME/.themes:ro --filesystem=$HOME/.local/share/themes --filesystem=$HOME/.icons:ro --user
+flatpak override --env=GTK_THEME="catppuccin-mocha-mauve-standard+default" --user
