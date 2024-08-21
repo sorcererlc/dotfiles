@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 pidof hyprlock || hyprlock -q

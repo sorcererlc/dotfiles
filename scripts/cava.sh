@@ -1,23 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
 
 # Not my own work. This was added through Github PR. Credit to original author
 
 #----- Optimized bars animation without much CPU usage increase --------
-bar="▁▂▃▄▅▆▇█"
-dict="s/;//g"
+BAR="▁▂▃▄▅▆▇█"
+DICT="s/;//g"
 
 # Calculate the length of the bar outside the loop
-bar_length=${#bar}
+BAR_LENGTH=${#bar}
 
 # Create dictionary to replace char with bar
-for ((i = 0; i < bar_length; i++)); do
-    dict+=";s/$i/${bar:$i:1}/g"
+for ((i = 0; i < BAR_LENGTH; i++)); do
+    DICT+=";s/$i/${BAR:$i:1}/g"
 done
 
 # Create cava config
-config_file="/tmp/bar_cava_config"
-cat >"$config_file" <<EOF
+CONFIG_FILE="/tmp/bar_cava_config"
+cat >"$CONFIG_FILE" <<EOF
 [general]
 bars = 15
 
@@ -33,7 +33,7 @@ ascii_max_range = 7
 EOF
 
 # Kill cava if it's already running
-pkill -f "cava -p $config_file"
+pkill -f "cava -p $CONFIG_FILE"
 
 # Read stdout from cava and perform substitution in a single sed command
-cava -p "$config_file" | sed -u "$dict"
+cava -p "$CONFIG_FILE" | sed -u "$DICT"

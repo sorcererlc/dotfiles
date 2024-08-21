@@ -63,11 +63,11 @@
             "actions": [
                 {
                     "label": "󰐥",
-                    "command": "bash -c $HOME/.config/hypr/scripts/Wlogout.sh"
+                    "command": "bash -c $HOME/.scripts/power_menu.sh"
                 },
                 {
                     "label": "󰌾",
-                    "command": "bash -c $HOME/.config/hypr/scripts/LockScreen.sh"
+                    "command": "bash -c $HOME/.scripts/lock_screen.sh"
                 },
                 {
                     "label": "󰍃",
@@ -75,7 +75,7 @@
                 },
                 {
                     "label": "󰀝",
-                    "command": "bash -c $HOME/.config/hypr/scripts/AirplaneMode.sh"
+                    "command": "bash -c $HOME/.scripts/airplane_mode.sh"
                 },
                 {
                     "label": "󰝟",

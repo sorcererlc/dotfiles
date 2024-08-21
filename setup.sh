@@ -29,5 +29,17 @@ done
 echo "Installing Catppuccin GTK theme."
 python3 $PWD/themes/catppuccin_gtk_install.py mocha mauve
 
+# Map theme directories to all flatpak apps and set the default theme
 flatpak override --filesystem=$HOME/.themes:ro --filesystem=$HOME/.local/share/themes --filesystem=$HOME/.icons:ro --user
 flatpak override --env=GTK_THEME="catppuccin-mocha-mauve-standard+default" --user
+
+# Set GTK options
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark > /dev/null 2>&1 &
+gsettings set org.gnome.desktop.interface gtk-theme catppuccin-mocha-mauve-standard+default > /dev/null 2>&1 &
+gsettings set org.gnome.desktop.interface icon-theme Flat-Remix-Blue-Dark > /dev/null 2>&1 &
+gsettings set org.gnome.desktop.interface cursor-theme Catppuccin-Mocha-Dark > /dev/null 2>&1 &
+gsettings set org.gnome.desktop.interface cursor-size 24 > /dev/null 2>&1 &
+    
+ # Set kvantum theme
+kvantummanager --set "Catppuccin-Mocha" > /dev/null 2>&1 &
+

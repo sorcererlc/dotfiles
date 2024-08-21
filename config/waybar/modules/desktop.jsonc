@@ -37,7 +37,8 @@
 		"ignore-list": [
 			"wofi",
 			"rofi",
-			"kitty"
+			"kitty",
+			"alacritty"
 		]
 	}
 }

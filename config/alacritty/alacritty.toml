@@ -1,0 +1,24 @@
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+
+live_config_reload = true
+
+[window]
+opacity = 0.9
+startup_mode = "Maximized"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style="Regular" }
+size = 10
+builtin_box_drawing = false
+
+[cursor.style]
+shape = "Block"
+blinking = "On"
+
+[mouse]
+hide_when_typing = true
+
+[keyboard]
+bindings = [
+{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" }
+]
