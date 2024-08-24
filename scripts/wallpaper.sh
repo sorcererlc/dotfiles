@@ -27,9 +27,8 @@ echo "$PICS"
 RANDOM_PIC="${PICS[$((RANDOM % ${#PICS[@]}))]}"
 RANDOM_PIC_NAME=". random"
 
-# Rofi command
-ROFI_COMMAND="rofi -i -show -dmenu -config ~/.config/rofi/config-wallpaper.rasi"
-
+# Menu command
+MENU_COMMAND="rofi -i -show -dmenu -config ~/.config/rofi/config-wallpaper.rasi"
 
 # Sorting Wallpapers
 menu() {
@@ -52,7 +51,7 @@ swww query || swww-daemon --format xrgb
 
 # Choice of wallpapers
 main() {
-  CHOICE=$(menu | ${ROFI_COMMAND})
+  CHOICE=$(menu | ${MENU_COMMAND})
   # No CHOICE case
   if [[ -z $CHOICE ]]; then
     exit 0

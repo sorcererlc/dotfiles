@@ -5,9 +5,9 @@
 		"on-click-middle": "",
 		"on-click-right": "",
 		"tooltip": false,
-		"tooltip-format": "Left Click: Rofi Menu\nMiddle Click: Wallpaper Menu\nRight Click: Waybar Layout Menu"
+		"tooltip-format": "Left Click: Menu\nMiddle Click: Wallpaper Menu\nRight Click: Waybar Layout Menu"
 	},
-  "hyprland/window": {
+	"hyprland/window": {
 		"format": "{}",
 		"max-length": 20,
 		"separate-outputs": true,
