@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-SOURCE_DIRS=( "$PWD/config" "$PWD/scripts" "$PWD/themes/home" "$PWD/themes/local_share" )
-DEST_DIRS=( "$HOME/.config" "$HOME/.scripts" "$HOME/.themes" "$HOME/.local/share/" )
+SOURCE_DIRS=( "$PWD/config" "$PWD/scripts" "$PWD/themes/home" "$PWD/themes/local_share" "$PWD/themes/icons" )
+DEST_DIRS=( "$HOME/.config" "$HOME/.scripts" "$HOME/.themes" "$HOME/.local/share/" "$HOME/.icons" )
 
 for ((i=0; i < ${#SOURCE_DIRS[@]}; i++)); do
   dir="${SOURCE_DIRS[i]}/*/"
