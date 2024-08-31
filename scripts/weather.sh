@@ -3,7 +3,7 @@
 CACHE_DIR=~/.cache/rbn
 CACHE_FILE=${0##*/}-$1
 
-APIKEY=9fb017f5c5e29a8acbc773ffd3a817dd
+APIKEY=$OWM_KEY # Exported as env var from a secrets file
 LAT=44.426765
 LON=26.102537
 EXCLUDE=minutely,daily,hourly

@@ -1,2 +1,11 @@
+build:
+	cd src && go build -o ../install ./main.go
+	chmod +x ./install
+
 install:
-	./setup.sh
+	make build
+	./install
+
+test:
+	make build
+	TEST=true DEBUG=true ./install
