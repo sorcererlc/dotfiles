@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
+source ~/.secrets
+
 CACHE_DIR=~/.cache/rbn
-CACHE_FILE=${0##*/}-$1
+CACHE_FILE="$CACHE_DIR/${0##*/}-$1"
 
 APIKEY=$OWM_KEY # Exported as env var from a secrets file
-LAT=44.426765
-LON=26.102537
+LAT=$LOCATION_LAT
+LON=$LOCATION_LON
 EXCLUDE=minutely,daily,hourly
 UNITS=metric
 LANG=en
@@ -16,32 +18,27 @@ if [ ! -d $CACHE_DIR ]; then
     mkdir -p $CACHE_DIR
 fi
 
-if [ ! -f $CACHE_DIR/$CACHE_FILE ]; then
-    touch $CACHE_DIR/$CACHE_FILE
+if [ ! -f $CACHE_FILE ]; then
+    touch $CACHE_FILE
 fi
 
-# Save current IFS
-SAVEIFS=$IFS
-# Change IFS to new line.
-IFS=$'\n'
-
-CACHE_AGE=$(($(date +%s) - $(stat -c '%Y' "$CACHE_DIR/$CACHE_FILE")))
-if [ $CACHE_AGE -gt 1740 ] || [ ! -s $CACHE_DIR/$CACHE_FILE ]; then
-    DATA=($(curl -s $URL 2>&1))
-    echo $DATA > $CACHE_DIR/$CACHE_FILE
+COD=$(cat $CACHE_FILE | jq '.cod')
+if [ $COD == 401 ]; then
+    rm $CACHE_FILE
+    touch $CACHE_FILE
 fi
 
-WEATHER=($(cat $CACHE_DIR/$CACHE_FILE))
+CACHE_AGE=$(($(date +%s) - $(stat -c '%Y' "$CACHE_FILE")))
+if [ $CACHE_AGE -gt 1740 ] || [ ! -s $CACHE_FILE ]; then
+    curl -s $URL -o $CACHE_FILE 2>&1
+fi
 
-# Restore IFSClear
-IFS=$SAVEIFS
-
-LOCATION=$(echo $WEATHER | jq '.timezone' | sed -r 's/["]+//g' | sed -r 's/.*\///g')
-TEMPERATURE=$(echo $WEATHER | jq '.current.temp')
-REAL_FEEL=$(echo $WEATHER | jq '.current.feels_like')
-COND=$(echo $WEATHER | jq '.current.weather[0].main' | sed -r 's/["]+//g')
-CONDITION_ID=$(echo $WEATHER | jq '.current.weather[0].id')
-CONDITION_ICON=$(echo $WEATHER | jq '.current.weather[0].icon' | sed -r 's/["]+//g')
+LOCATION=$(cat $CACHE_FILE | jq '.timezone' | sed -r 's/["]+//g' | sed -r 's/.*\///g')
+TEMPERATURE=$(cat $CACHE_FILE | jq '.current.temp')
+REAL_FEEL=$(cat $CACHE_FILE | jq '.current.feels_like')
+COND=$(cat $CACHE_FILE | jq '.current.weather[0].main' | sed -r 's/["]+//g')
+CONDITION_ID=$(cat $CACHE_FILE | jq '.current.weather[0].id')
+CONDITION_ICON=$(cat $CACHE_FILE | jq '.current.weather[0].icon' | sed -r 's/["]+//g')
 
 # https://fontawesome.com/icons?s=solid&c=weather
 case $(echo $CONDITION_ID) in
@@ -84,8 +81,8 @@ case $(echo $CONDITION_ID) in
 esac
 
 TEXT="$TEMPERATURE ($REAL_FEEL) $ICON"
-ALT="LOCATION"
-TOOLTIP="LOCATION: $TEMPERATURE ($REAL_FEEL), $CONDITION $ICON"
+ALT=$LOCATION
+TOOLTIP="$LOCATION $TEMPERATURE ($REAL_FEEL), $CONDITION $ICON"
 
 echo -e "{\"text\":\""$TEXT"\", \"alt\":\""$ALT"\", \"tooltip\":\""$TOOLTIP"\"}"
 
