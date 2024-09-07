@@ -61,7 +61,14 @@ func (f *Links) MakeLinks() error {
 			}
 		}
 
-		err := f.makeLink(l.Source, l.Target, l.Su)
+		d := strings.ReplaceAll(l.Target, "/*", "")
+
+		err := f.makeDir(d, l.Su)
+		if err != nil {
+			return err
+		}
+
+		err = f.makeLink(l.Source, l.Target, l.Su)
 		if err != nil {
 			return err
 		}
@@ -110,9 +117,26 @@ func (f *Links) targetExists(t string) bool {
 	return err == nil
 }
 
+func (f *Links) makeDir(d string, su bool) error {
+	if f.targetExists(d) {
+		return nil
+	}
+	args := []string{"mkdir", "-p", d}
+	if su {
+		args = append([]string{"sudo"}, args...)
+	}
+
+	err := helper.Run(args...)
+	if err != nil {
+		f.Log.Error("Make directory", d, err.Error())
+		return err
+	}
+
+	return nil
+}
+
 func (f *Links) makeLink(source, target string, su bool) error {
 	args := []string{"ln", "-s", source, target}
-
 	if su {
 		args = append([]string{"sudo"}, args...)
 	}

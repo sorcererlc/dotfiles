@@ -3,12 +3,12 @@ links:
     target: $HOME/.config
   - source: scripts
     target: $HOME/.scripts
-  - source: themes/home
+  - source: themes/home/*
     target: $HOME/.themes
-  - source: themes/home
+  - source: themes/home/*
     target: /usr/share/themes
     su: true
-  - source: themes/icons
+  - source: themes/icons/*
     target: $HOME/.icons
   - source: themes/local_share/*
     target: $HOME/.local/share
