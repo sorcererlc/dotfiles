@@ -61,7 +61,8 @@ func (f *Links) MakeLinks() error {
 			}
 		}
 
-		d := strings.ReplaceAll(l.Target, "/*", "")
+		r := regexp.MustCompile("(.*).+$")
+		d := r.ReplaceAllString(l.Target, "$1")
 
 		err := f.makeDir(d, l.Su)
 		if err != nil {
