@@ -88,7 +88,8 @@
 	"clock": {
 		"interval": 60,
 		"format": "{:%a | %d %B %Y | %H:%M}",
-		"tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+		"tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+		"on-click": "ags -t datemenu"
 	},
 	"keyboard-state": {
 		"capslock": true,
@@ -119,8 +120,8 @@
 	},
 	"custom/updater": {
 		"format": " {}",
-		"exec": "dnf check-update | awk 'NR>2 {print last} {last=$0}' | wc -l",
-		"exec-if": "[[ $(dnf check-update | awk 'NR>2 {print last} {last=$0}' | wc -l) ]]",
+		"exec": "~/.scripts/update_check.sh",
+		"exec-if": "[[ $(~/.scripts/update_check.sh) ]]",
 		"interval": 15,
 		"on-click": "alacritty --title=update --command=$HOME/.scripts/update.sh",
 		"tooltip": true,

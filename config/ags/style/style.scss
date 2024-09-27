@@ -1,0 +1,297 @@
+/*
+*
+* Catppuccin Mocha palette
+* Maintainer: rubyowo
+*
+*/
+
+$base : #1e1e2e;
+$mantle : #181825;
+$crust : #11111b;
+
+$text : #cdd6f4;
+$subtext0 : #a6adc8;
+$subtext1 : #bac2de;
+
+$surface0 : #313244;
+$surface1 : #45475a;
+$surface2 : #585b70;
+
+$overlay0 : #6c7086;
+$overlay1 : #7f849c;
+$overlay2 : #9399b2;
+
+$blue : #89b4fa;
+$lavender : #b4befe;
+$sapphire : #74c7ec;
+$sky : #89dceb;
+$teal : #94e2d5;
+$green : #a6e3a1;
+$yellow : #f9e2af;
+$peach : #fab387;
+$maroon : #eba0ac;
+$red : #f38ba8;
+$mauve : #cba6f7;
+$pink : #f5c2e7;
+$flamingo : #f2cdcd;
+$rosewater : #f5e0dc;
+
+
+/**
+* Common
+*/
+
+* {
+	font-family: "JetBrainsMono Nerd Font";
+	font-weight: bold;
+	font-size: 9pt;
+	font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+}
+
+window {
+	color: $text;
+	background: transparent;
+}
+
+button {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 5px;
+	color: $subtext0;
+	background: none;
+}
+
+button:hover {
+	background: $surface0;
+}
+
+/**
+* Bar
+*/
+
+.bar {
+	.box {
+		background: $base;
+		border-radius: 10px;
+		margin-top: 4px;
+		margin-left: 8px;
+		margin-right: 8px;
+		padding-left: 8px;
+		padding-right: 8px;
+
+		&.left,
+		&.center,
+		&.right {
+			border: 0.5px solid $mauve;
+		}
+
+		&.left,
+		&.right {
+			border: 1px solid $blue;
+		}
+	}
+
+	.launcher {
+		color: $rosewater;
+	}
+
+	.clock {
+		color: $yellow;
+	}
+
+	.workspaces {
+		button {
+			margin-left: 3px;
+		}
+
+		button:first-child {
+			margin-left: 0px;
+		}
+
+		button:hover {
+			color: $peach;
+		}
+
+		.focused {
+			color: $mauve;
+		}
+	}
+
+	.volume {
+		color: $blue;
+
+		.muted {
+			color: $red;
+		}
+	}
+
+	.battery {
+		color: $blue;
+
+		.warn {
+			color: $red;
+		}
+	}
+
+	.memory,
+	.cpu {
+		min-width: 40px;
+		color: $green;
+	}
+
+	.memory {
+		color: $blue;
+	}
+
+	.weather {
+		color: $yellow;
+	}
+
+	label.separator {
+		color: $yellow;
+	}
+
+	.system {
+		button {
+			color: $red;
+		}
+	}
+}
+
+/**
+* Launcher window
+*/
+
+.launcher-window {
+	padding: 24px;
+	border: 1px solid $blue;
+	border-radius: 8px;
+	background: $base;
+
+	.scrollable {
+		min-width: 500px;
+		min-height: 230px;
+	}
+
+	.search {
+		border-radius: 8px;
+		margin-bottom: 24px;
+	}
+
+	.app-list {
+		.entry {
+			margin-bottom: 3px;
+			background-color: transparent;
+
+			.title {
+				font-size: 10pt;
+				padding-left: 10px;
+			}
+		}
+	}
+}
+
+/**
+* Media player window
+*/
+
+.player {
+	margin: 10px;
+	padding: 10px;
+	min-width: 350px;
+	background: $base;
+	border-radius: 5px;
+	border: 1px solid $blue;
+
+	.img {
+		min-width: 100px;
+		min-height: 100px;
+		background-size: cover;
+		background-position: center;
+		border-radius: 13px;
+		margin-right: 1em;
+	}
+
+	.title {
+		font-size: 1.2em;
+		color: $blue;
+	}
+
+	.artist {
+		font-size: 1.1em;
+		color: $peach;
+	}
+
+	.position {
+		padding: 0;
+		margin-bottom: .3em;
+	}
+
+	scale.position trough {
+		min-height: 8px;
+	}
+
+	scale.position highlight {
+		background-color: $base;
+	}
+
+	scale.position slider {
+		all: unset;
+	}
+
+	button {
+		min-height: 1em;
+		min-width: 1em;
+		padding: .3em;
+	}
+
+	button.play-pause {
+		margin: 0 .3em;
+	}
+}
+
+/**
+* Calendar window
+*/
+
+.calendar-box {
+	all: unset;
+
+	background: $base;
+	border-radius: 8px;
+	margin-top: 10px;
+	padding: 5px;
+	border: 1px solid $blue;
+
+	.clock {
+		font-size: 24pt;
+		color: $blue;
+		margin: 2px;
+	}
+
+	.uptime {
+		font-size: 14pt;
+		color: $mauve;
+		margin: 2px;
+	}
+
+	calendar {
+		font-size: 12pt;
+		padding: 6px;
+		background: $base;
+		border-radius: 5px;
+		border: 1px solid $mauve;
+
+		.header {
+			border: none;
+		}
+
+		.button {
+			color: $blue;
+		}
+	}
+}

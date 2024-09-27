@@ -7,7 +7,6 @@ plugins = [
 
 [scratchpads.term]
 animation = "fromTop"
-# command = "kitty --class terminal-dropterm"
-command = "alacritty --class terminal-dropterm"
+command = "alacritty --class=terminal-dropterm"
 class = "terminal-dropterm"
 size = "75% 60%"

@@ -5,8 +5,7 @@ setup_fedora() {
 }
 
 setup_arch() {
-  sudo pacman -Syu
-  paru -Syu
+  yay -Syu
 }
 
 setup_debian() {
