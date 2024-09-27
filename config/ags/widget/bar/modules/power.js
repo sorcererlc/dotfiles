@@ -1,13 +1,13 @@
-const HOME_DIR = Utils.exec(["bash", "-c", "echo $HOME"])
+import { Environment } from "../../../service/env.js"
 
-const getUpdates = async () => Utils.execAsync(`${HOME_DIR}/.scripts/update_check.sh`)
+const getUpdates = async () => Utils.execAsync(`${Environment.home_dir}/.scripts/update_check.sh`)
     .then((res) => parseInt(res))
 
 const installUpdates = async () =>
-    Utils.execAsync(`alacritty --title=update --command=${HOME_DIR}/.scripts/update.sh`)
+    Utils.execAsync(`alacritty --title=update --command=${Environment.home_dir}/.scripts/update.sh`)
         .catch(print)
 
-const logout = async () => Utils.execAsync(`${HOME_DIR}/.scripts/power_menu.sh`)
+const logout = async () => Utils.execAsync(`${Environment.home_dir}/.scripts/power_menu.sh`)
 
 const updates_label = Widget.Label()
 const updates_button = Widget.Revealer({
