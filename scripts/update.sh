@@ -5,7 +5,7 @@ setup_fedora() {
 }
 
 setup_arch() {
-  yay -Syu
+  paru -Syu
 }
 
 setup_debian() {
