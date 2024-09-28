@@ -1,5 +1,7 @@
 import { Environment } from "../service/env.js"
 
+const CONFIG_FILE = `${Environment.home_dir}/.config/cava/bar_cava_config`
+
 class CavaSvc extends Service {
     static {
         Service.register(this, {}, {
@@ -8,7 +10,7 @@ class CavaSvc extends Service {
     }
 
     vals = Variable("", {
-        listen: [`${Environment.home_dir}/.scripts/cava.sh`, (d) => d],
+        listen: [`cava -p "${CONFIG_FILE}"`, (d) => d.replaceAll(";", "")]
     })
 
     constructor() {

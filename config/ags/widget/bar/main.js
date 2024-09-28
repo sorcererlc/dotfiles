@@ -23,6 +23,7 @@ const Left = (/** @type number */ monitor = 0) => {
             Separator(),
             Weather(),
             Separator(),
+            Media,
             Cava(),
         ],
     })
@@ -47,7 +48,6 @@ const Right = (/** @type number */ monitor = 0) => {
         class_name: "box right",
         hpack: "end",
         children: [
-            Media,
             SysTray(),
             Separator(),
             Volume("speaker"),
