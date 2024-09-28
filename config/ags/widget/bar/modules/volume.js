@@ -51,6 +51,7 @@ export const Volume = (dev = "speaker") => {
     return Widget.Button({
         child: box,
         on_clicked: () => audio[dev].is_muted = !audio[dev].is_muted,
+        on_secondary_click: () => Utils.execAsync("pavucontrol"),
     })
 }
 
