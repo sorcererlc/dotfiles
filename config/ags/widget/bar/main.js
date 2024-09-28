@@ -9,6 +9,7 @@ import { Media } from "./modules/media.js"
 import { System } from "./modules/system.js"
 import { Weather } from "./modules/weather.js"
 import { Power } from "./modules/power.js"
+import { Notifications } from "./modules/notifications.js"
 
 const Left = (/** @type number */ monitor = 0) => {
     return Widget.Box({
@@ -29,6 +30,8 @@ const Center = (/** @type number */ monitor = 0) => {
         class_name: "box center",
         hpack: "center",
         children: [
+            Notifications(),
+            Separator(),
             Clock(),
             Separator(),
             Workspaces(monitor),

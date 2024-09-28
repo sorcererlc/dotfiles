@@ -160,6 +160,14 @@ button:hover {
 			color: $red;
 		}
 	}
+
+	.notifications {
+		color: $blue;
+
+		&.dnd {
+			color: $pink;
+		}
+	}
 }
 
 /**
