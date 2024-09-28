@@ -10,6 +10,7 @@ import { System } from "./modules/system.js"
 import { Weather } from "./modules/weather.js"
 import { Power } from "./modules/power.js"
 import { Notifications } from "./modules/notifications.js"
+import { Cava } from "./modules/cava.js"
 
 const Left = (/** @type number */ monitor = 0) => {
     return Widget.Box({
@@ -21,6 +22,8 @@ const Left = (/** @type number */ monitor = 0) => {
             System(),
             Separator(),
             Weather(),
+            Separator(),
+            Cava(),
         ],
     })
 }
