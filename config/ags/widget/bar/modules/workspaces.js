@@ -14,8 +14,6 @@ const wsIcons = {
 }
 
 export const Workspaces = (/** @type number */ monitor) => {
-    const activeWs = hyprland.active.workspace.bind("id")
-
     const workspaces = hyprland.bind("workspaces")
         .as(ws => {
             ws = ws.filter((w) => {
@@ -31,7 +29,7 @@ export const Workspaces = (/** @type number */ monitor) => {
                     return Widget.Button({
                         on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
                         child: Widget.Label(`${id} ${wsIcons[id]}`),
-                        class_name: activeWs.as(i => `${i === id ? "focused" : ""}`),
+                        class_name: hyprland.active.workspace.bind("id").as(i => `${i === id ? "focused" : ""}`),
                     })
                 }
             )
