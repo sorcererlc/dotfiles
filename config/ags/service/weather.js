@@ -4,8 +4,8 @@ const UPDATE_INTERVAL = 60 * 60 * 1000
 
 class WeatherSvc extends Service {
     static {
-        Service.register(this, {
-            "weather-updated": ["jsobject"],
+        Service.register(this, {}, {
+            "weather": ["gobject"],
         })
     }
 
@@ -20,7 +20,7 @@ class WeatherSvc extends Service {
 
     #url = ""
 
-    #weather = {
+    weather = Variable({
         current: {
             temp: 0.0,
             feels_like: 0.0,
@@ -29,7 +29,7 @@ class WeatherSvc extends Service {
                 main: "",
             }]
         }
-    }
+    })
 
     constructor() {
         super()
@@ -82,9 +82,7 @@ class WeatherSvc extends Service {
                         return
                     }
 
-                    this.#weather = j
-
-                    this.emit("weather-updated", this.#weather)
+                    this.weather.value = j
                 })
             )
             .catch(print)
