@@ -26,7 +26,7 @@ const cpu_info = async () => Utils.readFileAsync("/proc/stat")
         cpu_times_cache.idle_time = idle
         cpu_times_cache.total_time = total
 
-        return Math.round(100 * (1 - idle_diff / total_diff)).toString()
+        return Math.round(100 * (1 - idle_diff / total_diff))
     })
 
 const memory_info = async () => Utils.execAsync(['bash', '-c', `free -h | awk '/^Mem/ {print $3}' | sed 's/Gi/G/g'`])
@@ -37,20 +37,20 @@ export const System = () => {
         class_name: "separator",
     })
 
-    const c_label = Widget.Label({
-        class_name: "cpu",
-    })
+    const c_label = Widget.Label()
 
-    const m_label = Widget.Label({
-        class_name: "memory",
-    })
+    const m_label = Widget.Label()
 
     Utils.interval(UPDATE_INTERVAL, () => {
-        cpu_info().then((l) => c_label.label = `󰾆 ${l}%`)
-            .catch(print)
+        cpu_info().then((l) => {
+            c_label.label = `󰾆 ${l.toString()}%`
+            c_label.class_name = `cpu${l > 95 ? " warn" : ""}`
+        }).catch(print)
 
-        memory_info().then((l) => m_label.label = `󰍛 ${l}`)
-            .catch(print)
+        memory_info().then((l) => {
+            m_label.label = `󰍛 ${l}`
+            m_label.class_name = `memory${parseFloat(l) > 28 ? " warn" : ""}`
+        }).catch(print)
     })
 
     return Widget.Button({

@@ -141,6 +141,10 @@ button:hover {
 	.cpu {
 		min-width: 40px;
 		color: $green;
+
+		&.warn {
+			color: $red;
+		}
 	}
 
 	.memory {
