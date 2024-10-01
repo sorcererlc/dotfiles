@@ -153,7 +153,7 @@ const PlayerBox = () => Widget.Box({
 
 export const Media = Widget.Window({
     name: "mpris",
-    anchor: ["top", "right"],
+    anchor: ["top", "left"],
     child: PlayerBox(),
     visible: false,
     keymode: "exclusive",

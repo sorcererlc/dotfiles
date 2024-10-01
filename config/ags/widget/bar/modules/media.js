@@ -7,8 +7,8 @@ const Player = player => Widget.Button({
     on_clicked: () => player.playPause(),
     on_secondary_click: () => App.toggleWindow("mpris"),
     child: Widget.Label().hook(player, label => {
-        const { track_artists, track_title } = player;
-        label.label = `${track_artists.join(', ')} - ${track_title} (${player.name})`;
+        const { track_artists, track_title, name } = player;
+        label.label = `${track_artists.join(', ')} - ${track_title} (${name})`;
     }),
 })
 
