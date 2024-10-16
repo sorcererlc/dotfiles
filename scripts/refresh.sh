@@ -10,7 +10,7 @@ file_exists() {
 }
 
 # Kill already running processes
-PS=(waybar rofi swaync ags)
+PS=(rofi swaync ags)
 for PRS in "${PS[@]}"; do
     if pidof "${PRS}" >/dev/null; then
         pkill "${PRS}"
@@ -21,8 +21,6 @@ done
 ags -q
 
 sleep 0.3
-# Relaunch waybar
-waybar &
 
 # relaunch swaync
 sleep 0.5

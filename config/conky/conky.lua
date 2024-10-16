@@ -45,7 +45,7 @@ conky.config = {
 	uppercase = false,
 	use_xft = true,
 	xftalpha = 0.8,
-	font = "JetBrainsMono Nerd Font:size=8",
+	font = "JetBrainsMono Nerd Font:size=10",
 }
 
 conky.text = [[
@@ -54,15 +54,15 @@ ${goto 10}${color1}Uptime:   ${color}$uptime					${goto 200}${color1}Load:${alig
 $hr
 ${goto 10}${color1}CPU: ${color}${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c -17}		${goto 200}${color1}Temp: ${alignr}${color}${exec "sensors -u k10temp-pci-00c3 | grep temp1_input | cut -c 16-19"}C
 ${goto 10}${color}${cpugraph 60,360 89B4FA F38BA8 -t}
-${goto 10}Core usage
-${goto 10}${color1}1:  ${color}${freq 1}Mhz ${goto 90}${cpubar cpu1 12,90}  	${goto 200}${color1}13: ${color}${freq 13}Mhz ${goto 280}${cpubar cpu9 12,90}
-${goto 10}${color1}2:  ${color}${freq 2}Mhz ${goto 90}${cpubar cpu2 12,90}  	${goto 200}${color1}14: ${color}${freq 14}Mhz ${goto 280}${cpubar cpu10 12,90}
-${goto 10}${color1}3:  ${color}${freq 3}Mhz ${goto 90}${cpubar cpu3 12,90}  	${goto 200}${color1}15: ${color}${freq 15}Mhz ${goto 280}${cpubar cpu11 12,90}
-${goto 10}${color1}4:  ${color}${freq 4}Mhz ${goto 90}${cpubar cpu4 12,90}  	${goto 200}${color1}16: ${color}${freq 16}Mhz ${goto 280}${cpubar cpu12 12,90}
-${goto 10}${color1}5:  ${color}${freq 5}Mhz ${goto 90}${cpubar cpu5 12,90}  	${goto 200}${color1}17: ${color}${freq 17}Mhz ${goto 280}${cpubar cpu13 12,90}
-${goto 10}${color1}6:  ${color}${freq 6}Mhz ${goto 90}${cpubar cpu6 12,90}  	${goto 200}${color1}18: ${color}${freq 18}Mhz ${goto 280}${cpubar cpu14 12,90}
-${goto 10}${color1}7:  ${color}${freq 7}Mhz ${goto 90}${cpubar cpu7 12,90}  	${goto 200}${color1}19: ${color}${freq 19}Mhz ${goto 280}${cpubar cpu15 12,90}
-${goto 10}${color1}8:  ${color}${freq 8}Mhz ${goto 90}${cpubar cpu8 12,90}  	${goto 200}${color1}20: ${color}${freq 20}Mhz ${goto 280}${cpubar cpu16 12,90}
+${goto 10}CPU cores
+${goto 10}${color1}1:  ${color}${freq 1}Mhz ${goto 100}${cpubar cpu1 12,80}  	${goto 200}${color1}13: ${color}${freq 13}Mhz ${goto 290}${cpubar cpu9 12,80}
+${goto 10}${color1}2:  ${color}${freq 2}Mhz ${goto 100}${cpubar cpu2 12,80}  	${goto 200}${color1}14: ${color}${freq 14}Mhz ${goto 290}${cpubar cpu10 12,80}
+${goto 10}${color1}3:  ${color}${freq 3}Mhz ${goto 100}${cpubar cpu3 12,80}  	${goto 200}${color1}15: ${color}${freq 15}Mhz ${goto 290}${cpubar cpu11 12,80}
+${goto 10}${color1}4:  ${color}${freq 4}Mhz ${goto 100}${cpubar cpu4 12,80}  	${goto 200}${color1}16: ${color}${freq 16}Mhz ${goto 290}${cpubar cpu12 12,80}
+${goto 10}${color1}5:  ${color}${freq 5}Mhz ${goto 100}${cpubar cpu5 12,80}  	${goto 200}${color1}17: ${color}${freq 17}Mhz ${goto 290}${cpubar cpu13 12,80}
+${goto 10}${color1}6:  ${color}${freq 6}Mhz ${goto 100}${cpubar cpu6 12,80}  	${goto 200}${color1}18: ${color}${freq 18}Mhz ${goto 290}${cpubar cpu14 12,80}
+${goto 10}${color1}7:  ${color}${freq 7}Mhz ${goto 100}${cpubar cpu7 12,80}  	${goto 200}${color1}19: ${color}${freq 19}Mhz ${goto 290}${cpubar cpu15 12,80}
+${goto 10}${color1}8:  ${color}${freq 8}Mhz ${goto 100}${cpubar cpu8 12,80}  	${goto 200}${color1}20: ${color}${freq 20}Mhz ${goto 290}${cpubar cpu16 12,80}
 $hr
 ${goto 10}${color1}Water:       ${color}${exec "sensors -u asusec-isa-0000 | grep -o 'temp4_input: [0-9]\{1,4\}' | cut -c 14-"}C	${goto 200}${color1}Pump:${alignr}${color}${exec "sensors -u nct6798-isa-0290 | grep -o 'fan6_input: [0-9]\{1,4\}' | cut -c 13-"}RPM
 ${goto 10}${color1}Top Fans:    ${color}${exec "sensors -u nct6798-isa-0290 | grep -o 'fan2_input: [0-9]\{1,4\}' | cut -c 13-"}RPM	${goto 200}${color1}Bottom Fans${alignr}${color}${exec "sensors -u nct6798-isa-0290 | grep -o 'fan3_input: [0-9]\{1,4\}' | cut -c 13-"}RPM
@@ -70,34 +70,34 @@ $hr
 ${goto 10}${color1}RAM: ${color}$memperc%					${alignr}$mem / $memmax
 ${goto 10}${color}${memgraph 75,360 89B4FA F38BA8 -t}
 $hr
-${goto 10}${color1}GPU:  ${color}${exec "nvidia-smi --query-gpu=name --format=csv,noheader"}			${color1}${goto 200}VRAM: ${alignr}${color}${exec "nvidia-smi --query-gpu=memory.used --format=csv,noheader"} / ${exec "nvidia-smi --query-gpu=memory.total --format=csv,noheader"}
+${goto 10}${color1}GPU:  ${color}${exec "nvidia-smi --query-gpu=name --format=csv,noheader | sed s/NVIDIA\ //g"}			${color1}${goto 200}VRAM: ${alignr}${color}${exec "nvidia-smi --query-gpu=memory.used --format=csv,noheader"}
 ${goto 10}${color1}Temp: ${color}${exec "nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader"}C	${color1}${goto 200}Power: ${alignr}${color}${exec "nvidia-smi | grep -Eo '...%.+?W' | awk '{print $4}'"}
 ${goto 10}${color}${execgraph "nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader | rev | cut -c 2- | rev" 60,360 89B4FA F38BA8 -t}
 $hr
 ${goto 10}${color1}File systems:
-${goto 10}${color1}root      ${color}${fs_used /}/${fs_size /}${color1}				${goto 200}${color1}storage ${color}${fs_used /mnt/storage}/${fs_size /mnt/storage}${color1}
-${goto 10}${color1}Read:     ${color}${diskio_read /dev/nvme0n1p2}				${goto 200}${color1}Read:   ${color}${diskio_read /dev/nvme1n1p1}
-${goto 10}${color1}Write:    ${color}${diskio_write /dev/nvme0n1p2}				${goto 200}${color1}Write:  ${color}${diskio_write /dev/nvme1n1p1}
-${goto 10}${diskiograph /dev/nvme0n1p2 60,170 89B4FA F38BA8 -t}					${goto 200}${diskiograph /dev/nvme1n1p1 60,170 89B4FA F38BA8 -t}
-${goto 10}${color1}data      ${color}${fs_used /mnt/data}/${fs_size /mnt/data}${color1}		${goto 200}${color1}media   ${color}${fs_used /mnt/media}/${fs_size /mnt/media}${color1}
+${goto 10}${color1}root   ${color}${fs_free /}${color1}			${goto 200}${color1}storage ${alignr}${color}${fs_free /mnt/storage}
+${goto 10}${color1}Read:  ${color}${diskio_read /dev/nvme0n1p2}		${goto 200}${color1}Read:   ${alignr}${color}${diskio_read /dev/nvme1n1p1}
+${goto 10}${color1}Write: ${color}${diskio_write /dev/nvme0n1p2}	${goto 200}${color1}Write:  ${alignr}${color}${diskio_write /dev/nvme1n1p1}
+${goto 10}${diskiograph /dev/nvme0n1p2 60,170 89B4FA F38BA8 -t}		${goto 200}${diskiograph /dev/nvme1n1p1 60,170 89B4FA F38BA8 -t}
+${goto 10}${color1}data   ${color}${fs_free /mnt/data}			${goto 200}${color1}media   ${alignr}${color}${fs_free /mnt/media}
 $hr
-${color1}Network: ${color}enp5s0
-${color1}Download: ${color}${downspeed enp5s0}			${goto 200}${color1}Upload: ${color}${upspeed enp5s0}
-${downspeedgraph enp5s0 60,170 89B4FA F38BA8 -t}		${goto 200}${upspeedgraph enp5s0 60,170 89B4FA F38BA8 -t}
+${goto 10}${color1}Network: ${color}enp5s0
+${goto 10}${color1}Download: ${color}${downspeed enp5s0}			${goto 200}${color1}Upload: ${alignr}${color}${upspeed enp5s0}
+${goto 10}${downspeedgraph enp5s0 60,170 89B4FA F38BA8 -t}		${goto 200}${upspeedgraph enp5s0 60,170 89B4FA F38BA8 -t}
 $hr
-${color1}Top Process by CPU:
-${color1}Name              PID     CPU%  MEM% ${alignr}TIME
-${color}${top name 1} ${top pid 1} ${top cpu 1} ${top mem_res 1}${alignr}${top time 1}
-${color}${top name 2} ${top pid 2} ${top cpu 2} ${top mem_res 2}${alignr}${top time 2}
-${color}${top name 3} ${top pid 3} ${top cpu 3} ${top mem_res 3}${alignr}${top time 3}
-${color}${top name 4} ${top pid 4} ${top cpu 4} ${top mem_res 4}${alignr}${top time 4}
-${color}${top name 5} ${top pid 5} ${top cpu 5} ${top mem_res 5}${alignr}${top time 5}
+${goto 10}${color1}Top Process by CPU:
+${goto 10}${color1}Name              PID     CPU%  ${alignr}MEM%
+${goto 10}${color}${top name 1} ${top pid 1} ${top cpu 1} ${alignr}${top mem_res 1}
+${goto 10}${color}${top name 2} ${top pid 2} ${top cpu 2} ${alignr}${top mem_res 2}
+${goto 10}${color}${top name 3} ${top pid 3} ${top cpu 3} ${alignr}${top mem_res 3}
+${goto 10}${color}${top name 4} ${top pid 4} ${top cpu 4} ${alignr}${top mem_res 4}
+${goto 10}${color}${top name 5} ${top pid 5} ${top cpu 5} ${alignr}${top mem_res 5}
 $hr
-${color1}Top Process by Memory:
-${color1}Name              PID     CPU%  MEM% ${alignr}TIME
-${color}${top_mem name 1} ${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem_res 1}${alignr}${top_mem time 1}
-${color}${top_mem name 2} ${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem_res 2}${alignr}${top_mem time 2}
-${color}${top_mem name 3} ${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem_res 3}${alignr}${top_mem time 3}
-${color}${top_mem name 4} ${top_mem pid 4} ${top_mem cpu 4} ${top_mem mem_res 4}${alignr}${top_mem time 4}
-${color}${top_mem name 5} ${top_mem pid 5} ${top_mem cpu 5} ${top_mem mem_res 5}${alignr}${top_mem time 5}
+${goto 10}${color1}Top Process by Memory:
+${goto 10}${color1}Name              PID     CPU%  ${alignr}MEM%
+${goto 10}${color}${top_mem name 1} ${top_mem pid 1} ${top_mem cpu 1} ${alignr}${top_mem mem_res 1}
+${goto 10}${color}${top_mem name 2} ${top_mem pid 2} ${top_mem cpu 2} ${alignr}${top_mem mem_res 2}
+${goto 10}${color}${top_mem name 3} ${top_mem pid 3} ${top_mem cpu 3} ${alignr}${top_mem mem_res 3}
+${goto 10}${color}${top_mem name 4} ${top_mem pid 4} ${top_mem cpu 4} ${alignr}${top_mem mem_res 4}
+${goto 10}${color}${top_mem name 5} ${top_mem pid 5} ${top_mem cpu 5} ${alignr}${top_mem mem_res 5}
 ]]
