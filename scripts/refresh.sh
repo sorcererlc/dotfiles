@@ -18,7 +18,7 @@ for PRS in "${PS[@]}"; do
 done
 
 # quit ags
-ags -q
+# ags -q
 
 sleep 0.3
 
@@ -27,7 +27,7 @@ sleep 0.5
 swaync > /dev/null 2>&1 &
 
 # relaunch ags
-ags &
+# ags &
 
 exit 0
 
