@@ -52,20 +52,20 @@ conky.text = [[
 ${goto 10}${color1}Hostname: ${color}$nodename					${goto 200}${color1}Kernel:${alignr}${color} $kernel
 ${goto 10}${color1}Uptime:   ${color}$uptime					${goto 200}${color1}Load:${alignr}${color} $loadavg
 $hr
+${goto 10}${color1}Water:       ${color}${exec "sensors -u asusec-isa-0000 | grep -o 'temp4_input: [0-9]\{1,4\}' | cut -c 14-"}C	${goto 200}${color1}Pump:${alignr}${color}${exec "sensors -u nct6798-isa-0290 | grep -o 'fan6_input: [0-9]\{1,4\}' | cut -c 13-"}RPM
+${goto 10}${color1}Top Fans:    ${color}${exec "sensors -u nct6798-isa-0290 | grep -o 'fan2_input: [0-9]\{1,4\}' | cut -c 13-"}RPM	${goto 200}${color1}Bottom Fans${alignr}${color}${exec "sensors -u nct6798-isa-0290 | grep -o 'fan3_input: [0-9]\{1,4\}' | cut -c 13-"}RPM
+$hr
 ${goto 10}${color1}CPU: ${color}${execi 1000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c -17}		${goto 200}${color1}Temp: ${alignr}${color}${exec "sensors -u k10temp-pci-00c3 | grep temp1_input | cut -c 16-19"}C
 ${goto 10}${color}${cpugraph 60,360 89B4FA F38BA8 -t}
 ${goto 10}CPU cores
-${goto 10}${color1}1:  ${color}${freq 1}Mhz ${goto 100}${cpubar cpu1 12,80}  	${goto 200}${color1}13: ${color}${freq 13}Mhz ${goto 290}${cpubar cpu9 12,80}
-${goto 10}${color1}2:  ${color}${freq 2}Mhz ${goto 100}${cpubar cpu2 12,80}  	${goto 200}${color1}14: ${color}${freq 14}Mhz ${goto 290}${cpubar cpu10 12,80}
-${goto 10}${color1}3:  ${color}${freq 3}Mhz ${goto 100}${cpubar cpu3 12,80}  	${goto 200}${color1}15: ${color}${freq 15}Mhz ${goto 290}${cpubar cpu11 12,80}
-${goto 10}${color1}4:  ${color}${freq 4}Mhz ${goto 100}${cpubar cpu4 12,80}  	${goto 200}${color1}16: ${color}${freq 16}Mhz ${goto 290}${cpubar cpu12 12,80}
-${goto 10}${color1}5:  ${color}${freq 5}Mhz ${goto 100}${cpubar cpu5 12,80}  	${goto 200}${color1}17: ${color}${freq 17}Mhz ${goto 290}${cpubar cpu13 12,80}
-${goto 10}${color1}6:  ${color}${freq 6}Mhz ${goto 100}${cpubar cpu6 12,80}  	${goto 200}${color1}18: ${color}${freq 18}Mhz ${goto 290}${cpubar cpu14 12,80}
-${goto 10}${color1}7:  ${color}${freq 7}Mhz ${goto 100}${cpubar cpu7 12,80}  	${goto 200}${color1}19: ${color}${freq 19}Mhz ${goto 290}${cpubar cpu15 12,80}
-${goto 10}${color1}8:  ${color}${freq 8}Mhz ${goto 100}${cpubar cpu8 12,80}  	${goto 200}${color1}20: ${color}${freq 20}Mhz ${goto 290}${cpubar cpu16 12,80}
-$hr
-${goto 10}${color1}Water:       ${color}${exec "sensors -u asusec-isa-0000 | grep -o 'temp4_input: [0-9]\{1,4\}' | cut -c 14-"}C	${goto 200}${color1}Pump:${alignr}${color}${exec "sensors -u nct6798-isa-0290 | grep -o 'fan6_input: [0-9]\{1,4\}' | cut -c 13-"}RPM
-${goto 10}${color1}Top Fans:    ${color}${exec "sensors -u nct6798-isa-0290 | grep -o 'fan2_input: [0-9]\{1,4\}' | cut -c 13-"}RPM	${goto 200}${color1}Bottom Fans${alignr}${color}${exec "sensors -u nct6798-isa-0290 | grep -o 'fan3_input: [0-9]\{1,4\}' | cut -c 13-"}RPM
+${goto 10}${color1}1:  ${color}${freq 1}Mhz ${goto 100}${cpubar cpu1 12,80}  	${goto 200}${color1} 9: ${color}${freq 9}Mhz ${goto 290}${cpubar cpu9 12,80}
+${goto 10}${color1}2:  ${color}${freq 2}Mhz ${goto 100}${cpubar cpu2 12,80}  	${goto 200}${color1}10: ${color}${freq 10}Mhz ${goto 290}${cpubar cpu10 12,80}
+${goto 10}${color1}3:  ${color}${freq 3}Mhz ${goto 100}${cpubar cpu3 12,80}  	${goto 200}${color1}11: ${color}${freq 11}Mhz ${goto 290}${cpubar cpu11 12,80}
+${goto 10}${color1}4:  ${color}${freq 4}Mhz ${goto 100}${cpubar cpu4 12,80}  	${goto 200}${color1}12: ${color}${freq 12}Mhz ${goto 290}${cpubar cpu12 12,80}
+${goto 10}${color1}5:  ${color}${freq 5}Mhz ${goto 100}${cpubar cpu5 12,80}  	${goto 200}${color1}13: ${color}${freq 13}Mhz ${goto 290}${cpubar cpu13 12,80}
+${goto 10}${color1}6:  ${color}${freq 6}Mhz ${goto 100}${cpubar cpu6 12,80}  	${goto 200}${color1}14: ${color}${freq 14}Mhz ${goto 290}${cpubar cpu14 12,80}
+${goto 10}${color1}7:  ${color}${freq 7}Mhz ${goto 100}${cpubar cpu7 12,80}  	${goto 200}${color1}15: ${color}${freq 15}Mhz ${goto 290}${cpubar cpu15 12,80}
+${goto 10}${color1}8:  ${color}${freq 8}Mhz ${goto 100}${cpubar cpu8 12,80}  	${goto 200}${color1}16: ${color}${freq 16}Mhz ${goto 290}${cpubar cpu16 12,80}
 $hr
 ${goto 10}${color1}RAM: ${color}$memperc%					${alignr}$mem / $memmax
 ${goto 10}${color}${memgraph 75,360 89B4FA F38BA8 -t}

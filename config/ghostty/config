@@ -1,0 +1,10 @@
+font-family = JetBrainsMono Nerd Font
+font-size = 10
+theme = catppuccin-mocha
+cursor-style = block
+background-opacity = 0.9
+copy-on-select = false
+
+# Tabs
+keybind = alt+left=move_tab:-1
+keybind = alt+right=move_tab:1

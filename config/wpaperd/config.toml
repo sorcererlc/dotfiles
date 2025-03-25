@@ -1,0 +1,13 @@
+[default]
+duration = "30m"
+mode = "center"
+sorting = "ascending"
+
+[any]
+path = "/home/sorcerer/Pictures/Wallpapers/Img-20.png"
+
+[DP-1]
+path = "/home/sorcerer/Pictures/Wallpapers/McLaren_Neon_art.png"
+
+[HDMI-A-1]
+path = "/home/sorcerer/Pictures/Wallpapers/Synthwave/3.jpg"
